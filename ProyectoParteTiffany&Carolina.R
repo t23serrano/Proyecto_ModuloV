@@ -53,6 +53,7 @@ Prec_Total_conDesc
 
 #5.	Cantidad de clientes según su género (Tabla Clientes)
 
+#a) Barras
 Clientes_sexo1 <- mutate(Clientes_Autos, sexo_factor1 = factor(Clientes_Autos$Género, 
                                                              labels = c("Femenino", "Masculino")))
 ggplot(Clientes_sexo1, aes(x = sexo_factor1)) +
