@@ -38,17 +38,26 @@ INV_menos_Vendidos <- Inventario_Autos %>%
   mutate(Prec_Total_conDesc = ifelse(Qty_Final > 45, Precio_Compra - 2000, NA)) %>%
   group_by(Brand) %>%
   na.omit(INV_menos_Vendidos)
-filter_Año= filter(INV_menos_Vendidos,Model_Year > "1990") 
+filter_Año= filter(INV_menos_Vendidos,Model_Year < "1990")
 
+
+View (INV_menos_Vendidos)
 
 Prec_Total_conDesc <- plot_ly(
   type = "funnelarea",
   values = as.numeric(filter_Año$Prec_Total_conDesc),
   textinfo = "value",
   text = as.character(filter_Año$Brand),
-  title = list(position = "top left", text = "Sale, Modelos menores a 1999"))
+  title = list(position = "top left", text = "Descuentos, Modelos menores a 1990"))
+
 
 Prec_Total_conDesc
+
+
+barplot(table(filter_Año$Brand[filter_Año$Prec_Total_conDesc < 15000]), 
+        col = "cyan", border = "black",
+        main = " Marcas con descuento por poca venta ",
+        xlab = "Marcas", ylab = "Monto en Dólares")
 
 
 #5.	Cantidad de clientes según su género (Tabla Clientes)
