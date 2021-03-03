@@ -53,7 +53,7 @@ Prec_Total_conDesc <- plot_ly(
 
 Prec_Total_conDesc
 
-
+#Barras
 barplot(table(filter_Año$Brand[filter_Año$Prec_Total_conDesc < 15000]), 
         col = "cyan", border = "black",
         main = " Marcas con descuento por poca venta ",
